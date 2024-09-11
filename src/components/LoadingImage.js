@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Image, StyleSheet, View } from "react-native";
-import Shape from "./Shape";
+import { MotiView } from "moti";
+import { Skeleton } from "moti/skeleton";
 
 function delay(time) {
   return new Promise((resolve) => setTimeout(resolve, time));
@@ -18,7 +19,14 @@ function LoadingImage() {
   return (
     <View>
       {isLoading ? (
-        <Shape />
+        <MotiView
+          transition={{
+            type: "timing",
+          }}
+          animate={"#ffffff"}
+        >
+          <Skeleton colorMode="light" radius="round" height={75} width={75} />
+        </MotiView>
       ) : (
         <Image
           accessibilityLabel="Two black women"
